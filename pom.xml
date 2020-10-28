@@ -65,12 +65,6 @@
             <artifactId>commons-pool2</artifactId>
         </dependency>
 
-        <!-- 任务调度 -->
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-        </dependency>
-
         <!-- MyBatis增强插件 -->
         <dependency>
             <groupId>com.baomidou</groupId>
