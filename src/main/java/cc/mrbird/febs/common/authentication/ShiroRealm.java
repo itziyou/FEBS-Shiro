@@ -5,7 +5,6 @@ import cc.mrbird.febs.system.entity.Role;
 import cc.mrbird.febs.system.entity.User;
 import cc.mrbird.febs.system.service.IMenuService;
 import cc.mrbird.febs.system.service.IRoleService;
-import cc.mrbird.febs.system.service.IUserDataPermissionService;
 import cc.mrbird.febs.system.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
@@ -32,7 +31,6 @@ public class ShiroRealm extends AuthorizingRealm {
     private IUserService userService;
     private IRoleService roleService;
     private IMenuService menuService;
-    private IUserDataPermissionService userDataPermissionService;
 
     @Autowired
     public void setMenuService(IMenuService menuService) {
@@ -45,10 +43,6 @@ public class ShiroRealm extends AuthorizingRealm {
     @Autowired
     public void setRoleService(IRoleService roleService) {
         this.roleService = roleService;
-    }
-    @Autowired
-    public void setUserDataPermissionService(IUserDataPermissionService userDataPermissionService) {
-        this.userDataPermissionService = userDataPermissionService;
     }
 
     /**
@@ -98,8 +92,6 @@ public class ShiroRealm extends AuthorizingRealm {
         if (User.STATUS_LOCK.equals(user.getStatus())) {
             throw new LockedAccountException("账号已被锁定,请联系管理员！");
         }
-        String deptIds = this.userDataPermissionService.findByUserId(String.valueOf(user.getUserId()));
-        user.setDeptIds(deptIds);
         return new SimpleAuthenticationInfo(user, password, getName());
     }
 

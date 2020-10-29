@@ -8,7 +8,6 @@ import cc.mrbird.febs.common.utils.TreeUtil;
 import cc.mrbird.febs.system.entity.Dept;
 import cc.mrbird.febs.system.mapper.DeptMapper;
 import cc.mrbird.febs.system.service.IDeptService;
-import cc.mrbird.febs.system.service.IUserDataPermissionService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
@@ -32,7 +31,6 @@ import java.util.List;
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements IDeptService {
 
-    private final IUserDataPermissionService userDataPermissionService;
 
     @Override
     public List<DeptTree<Dept>> findDepts() {
@@ -105,7 +103,6 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
     private void delete(List<String> deptIds) {
         removeByIds(deptIds);
-        userDataPermissionService.deleteByDeptIds(deptIds);
 
         LambdaQueryWrapper<Dept> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.in(Dept::getParentId, deptIds);

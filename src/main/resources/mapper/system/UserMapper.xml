@@ -145,8 +145,4 @@
             u.is_tab
     </select>
 
-    <select id="findUserDataPermissions" parameterType="long" resultType="userDataPermission">
-        select user_id userId, dept_id deptId from t_user_data_permission
-        where user_id = #{userId}
-    </select>
 </mapper>

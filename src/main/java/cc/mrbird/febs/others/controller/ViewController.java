@@ -44,47 +44,6 @@ public class ViewController {
         return FebsUtil.view("others/febs/others");
     }
 
-    @GetMapping("apex/line")
-    @RequiresPermissions("apex:line:view")
-    public String apexLine() {
-        return FebsUtil.view("others/apex/line");
-    }
-
-    @GetMapping("apex/area")
-    @RequiresPermissions("apex:area:view")
-    public String apexArea() {
-        return FebsUtil.view("others/apex/area");
-    }
-
-    @GetMapping("apex/column")
-    @RequiresPermissions("apex:column:view")
-    public String apexColumn() {
-        return FebsUtil.view("others/apex/column");
-    }
-
-    @GetMapping("apex/radar")
-    @RequiresPermissions("apex:radar:view")
-    public String apexRadar() {
-        return FebsUtil.view("others/apex/radar");
-    }
-
-    @GetMapping("apex/bar")
-    @RequiresPermissions("apex:bar:view")
-    public String apexBar() {
-        return FebsUtil.view("others/apex/bar");
-    }
-
-    @GetMapping("apex/mix")
-    @RequiresPermissions("apex:mix:view")
-    public String apexMix() {
-        return FebsUtil.view("others/apex/mix");
-    }
-
-    @GetMapping("map")
-    @RequiresPermissions("map:view")
-    public String map() {
-        return FebsUtil.view("others/map/gaodeMap");
-    }
 
     @GetMapping("eximport")
     @RequiresPermissions("others:eximport:view")
@@ -97,8 +56,4 @@ public class ViewController {
         return FebsUtil.view("others/eximport/eximportResult");
     }
 
-    @GetMapping("datapermission")
-    public String dataPermissionTest() {
-        return FebsUtil.view("others/datapermission/test");
-    }
 }
